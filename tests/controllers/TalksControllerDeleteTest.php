@@ -28,7 +28,7 @@ class TalksControllerDeleteTest extends TalkBase
         $db = $this->getMockBuilder(mockPDO::class)->getMock();
 
         $talks_controller = new TalksController();
-        $talks_controller->deleteTalkStarred($request, $db);
+        $talks_controller->removeStarFromTalk($request, $db);
     }
 
     /**
@@ -60,7 +60,7 @@ class TalksControllerDeleteTest extends TalkBase
             $talkMapper
         );
 
-        $talks_controller->deleteTalkStarred($request, $db);
+        $talks_controller->removeStarFromTalk($request, $db);
     }
 
     /**
