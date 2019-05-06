@@ -203,7 +203,7 @@
     {
         "path": "/talks/[\\d]+/starred/?$",
         "controller": "TalksController",
-        "action": "deleteTalkStarred",
+        "action": "removeStarFromTalk",
         "verbs": ["DELETE"]
     },
     {
