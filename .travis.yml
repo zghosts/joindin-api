@@ -30,6 +30,11 @@ env:
     - DB_NAME=joindin
 
 before_install:
+  - echo '[mysqld]' | sudo sh -c 'cat >>  /etc/mysql/my.cnf'
+  - echo 'innodb_file_format=Barracuda' | sudo sh -c 'cat >>  /etc/mysql/my.cnf'
+  - echo 'innodb_file_per_table=1' | sudo sh -c 'cat >>  /etc/mysql/my.cnf'
+  - echo 'innodb_large_prefix=1' | sudo sh -c 'cat >>  /etc/mysql/my.cnf'
+  - sudo service mysql restart
   - mysql -e "create database IF NOT EXISTS $DB_NAME;" -u root
 
 before_script:
