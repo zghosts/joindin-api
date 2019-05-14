@@ -22,6 +22,7 @@ install:
   - composer install
   - npm install
   - travis/install-nginx.sh
+  - scripts/patchdb.sh -t . -d $DB_NAME -u root -i
 
 env:
   global:
@@ -30,9 +31,10 @@ env:
 
 before_install:
   - mysql -e "create database IF NOT EXISTS $DB_NAME;" -u root
-  - scripts/patchdb.sh -t . -d $DB_NAME -u root -i
+
 
 before_script:
+
   - cp src/config.php.dist src/config.php
   - git remote set-branches --add origin master
   - git fetch
