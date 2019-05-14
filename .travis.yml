@@ -48,5 +48,5 @@ before_script:
   - git fetch
 
 script:
-  - composer check
   - ./node_modules/.bin/jasmine-node tests/frisby/api_spec.js
+  - composer check
