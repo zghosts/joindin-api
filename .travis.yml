@@ -30,7 +30,7 @@ install:
   - scripts/patchdb.sh -t . -d $DB_NAME -u root -i
   - cp src/config.php.dist src/config.php
   - cp src/database.php.dist src/database.php
-  - php -S 127.0.0.1:8080 -t src/public src/public/index.php &
+  - cd src/public && php -S 127.0.0.1:8080 -t . index.php &
 
 env:
   global:
