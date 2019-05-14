@@ -1,17 +1,37 @@
 language: php
 dist: trusty
 cache:
+  apt: true
   directories:
     - $HOME/.composer/cache/files
     - $HOME/.cache/composer/files
+
+services:
+  - mysql
+
 matrix:
   include:
     - php: 7.3
   fast_finish: true
-before_script:
+addons:
+  apt:
+    packages:
+      - nginx
+      - realpath
+install:
   - composer install
+  - travis/install-nginx.sh
+env:
+    - JOINDIN_API_BASE_URL=http://joindin-api.localhost
+    - DB_NAME=joindin_api
+before_install:
+    - mysql -e "create database IF NOT EXIST $DB_NAME;" -u root
+    - scripts/patchdb.sh -t . -d $DB_NAME -u root -i
+
+before_script:
   - cp src/config.php.dist src/config.php
   - git remote set-branches --add origin master
   - git fetch
+
 script:
   - composer check
