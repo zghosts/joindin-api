@@ -29,8 +29,8 @@ env:
     - DB_NAME=joindin_api
 
 before_install:
-  - mysql -e "create database IF NOT EXIST $DB_NAME;" -u root
-  - scripts/patchdb.sh -t . -d $DB_NAME -u root -i
+  - mysql -e "create database IF NOT EXIST joindin_api;" -u root
+  - scripts/patchdb.sh -t . -d joindin_api -u root -i
 
 before_script:
   - cp src/config.php.dist src/config.php
