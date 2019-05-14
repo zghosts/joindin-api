@@ -42,6 +42,7 @@ before_install:
 
 before_script:
   - cp src/config.php.dist src/config.php
+  - cp src/database.php.dist src/database.php
   - git remote set-branches --add origin master
   - git fetch
 
