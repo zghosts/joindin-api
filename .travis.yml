@@ -20,15 +20,17 @@ addons:
       - realpath
 install:
   - composer install
+  - npm install
   - travis/install-nginx.sh
 
 env:
+  global:
     - JOINDIN_API_BASE_URL=http://joindin-api.localhost
     - DB_NAME=joindin_api
 
 before_install:
-    - mysql -e "create database IF NOT EXIST $DB_NAME;" -u root
-    - scripts/patchdb.sh -t . -d $DB_NAME -u root -i
+  - mysql -e "create database IF NOT EXIST $DB_NAME;" -u root
+  - scripts/patchdb.sh -t . -d $DB_NAME -u root -i
 
 before_script:
   - cp src/config.php.dist src/config.php
@@ -37,3 +39,4 @@ before_script:
 
 script:
   - composer check
+  - ./node_modules/.bin/jasmine-node tests/frisby/api_spec.js
