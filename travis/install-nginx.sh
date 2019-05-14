@@ -43,4 +43,4 @@ tpl "$DIR/default-site.tpl.conf" "$DIR/nginx/sites-enabled/default-site.conf"
 
 # Start nginx.
 #nginx -c "$DIR/nginx/nginx.conf"
-service nginx restart
+sudo service nginx restart
