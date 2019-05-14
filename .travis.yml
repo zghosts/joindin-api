@@ -22,13 +22,12 @@ install:
   - composer install
   - npm install
   - travis/install-nginx.sh
-  - mkdir joindin
   - scripts/patchdb.sh -t . -d $DB_NAME -u root -i
 
 env:
   global:
     - JOINDIN_API_BASE_URL=http://joindin-api.localhost
-    - DB_NAME=joindin_api
+    - DB_NAME=joindin
 
 before_install:
   - mysql -e "create database IF NOT EXISTS $DB_NAME;" -u root
