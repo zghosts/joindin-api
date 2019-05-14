@@ -32,7 +32,6 @@ env:
 before_install:
   - mysql -e "create database IF NOT EXISTS $DB_NAME;" -u root
 
-
 before_script:
 
   - cp src/config.php.dist src/config.php
