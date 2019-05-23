@@ -21,7 +21,7 @@ addons:
 install:
   - composer install
   - npm install
-  #- travis/install-nginx.sh
+  - travis/install-nginx.sh
   - echo '[mysqld]' | sudo sh -c 'cat >>  /etc/mysql/conf.d/travis.cnf'
   - echo 'innodb_file_format=Barracuda' | sudo sh -c 'cat >>  /etc/mysql/conf.d/travis.cnf'
   - echo 'innodb_file_per_table=1' | sudo sh -c 'cat >>  /etc/mysql/conf.d/travis.cnf'
@@ -30,7 +30,8 @@ install:
   - scripts/patchdb.sh -t . -d $DB_NAME -u root -i
   - cp src/config.php.dist src/config.php
   - cp src/database.php.dist src/database.php
-  - cd src/public && php -S 127.0.0.1:8080 -t . index.php &
+  - sudo service nginx restart
+  #- cd src/public && php -S 127.0.0.1:8080 -t . index.php &
 
 env:
   global:
