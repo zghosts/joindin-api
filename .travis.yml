@@ -50,4 +50,5 @@ before_script:
 
 script:
   - ./node_modules/.bin/jasmine-node tests/frisby/api_spec.js
+  - cat /tmp/error.log
   - composer check
