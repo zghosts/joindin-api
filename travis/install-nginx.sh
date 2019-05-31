@@ -48,8 +48,4 @@ cat "$DIR/nginx/fastcgi.conf"
 cat "$DIR/nginx/sites-enabled/default-site.conf"
 
 # Start nginx.
-#nginx -c "$DIR/nginx/nginx.conf"
-echo "starting nginx"
-ps ax
-
-sudo service nginx restart
+sudo nginx -c "$DIR/nginx/nginx.conf"
