@@ -21,7 +21,7 @@ addons:
 install:
   - composer install
   - npm install
-  #- travis/install-nginx.sh
+  - travis/install-nginx.sh
   - echo '[mysqld]' | sudo sh -c 'cat >>  /etc/mysql/conf.d/travis.cnf'
   - echo 'innodb_file_format=Barracuda' | sudo sh -c 'cat >>  /etc/mysql/conf.d/travis.cnf'
   - echo 'innodb_file_per_table=1' | sudo sh -c 'cat >>  /etc/mysql/conf.d/travis.cnf'
