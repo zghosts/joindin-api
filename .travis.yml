@@ -35,7 +35,7 @@ install:
 
 env:
   global:
-    - JOINDIN_API_BASE_URL=http://127.0.0.1:8080
+    - JOINDIN_API_BASE_URL=http://127.0.0.1:80
     - DB_NAME=joindin
     - MYSQL_HOST=127.0.0.1
     - MYSQL_USER=root
