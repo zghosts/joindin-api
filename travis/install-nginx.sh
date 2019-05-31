@@ -10,6 +10,8 @@ ROOT=$(realpath "$DIR/..")
 PORT=9000
 SERVER="/tmp/php.sock"
 
+echo "$DIR"
+
 function tpl {
     sed \
         -e "s|{DIR}|$DIR|g" \
@@ -41,6 +43,13 @@ tpl "$DIR/nginx.tpl.conf" "$DIR/nginx/nginx.conf"
 tpl "$DIR/fastcgi.tpl.conf" "$DIR/nginx/fastcgi.conf"
 tpl "$DIR/default-site.tpl.conf" "$DIR/nginx/sites-enabled/default-site.conf"
 
+cat "$DIR/nginx/nginx.conf"
+cat "$DIR/nginx/fastcgi.conf"
+cat "$DIR/nginx/sites-enabled/default-site.conf"
+
 # Start nginx.
 #nginx -c "$DIR/nginx/nginx.conf"
-#sudo service nginx restart
+echo "starting nginx"
+ps ax
+
+sudo service nginx restart
