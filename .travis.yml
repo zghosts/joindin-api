@@ -47,9 +47,9 @@ before_install:
 before_script:
   - git remote set-branches --add origin master
   - git fetch
-  - php -S 127.0.0.1:8080 -t /src/public index.php >/tmp/error.log 2>&1 &
 
 script:
+  - curl http://127.0.0.1:8080/
   - ./node_modules/.bin/jasmine-node tests/frisby/api_spec.js
   - cat /tmp/error.log
   - composer check

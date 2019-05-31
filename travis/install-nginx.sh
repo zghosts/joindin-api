@@ -35,9 +35,6 @@ PHP_FPM_CONF="$DIR/nginx/php-fpm.conf"
 # Build the php-fpm.conf.
 tpl "$DIR/php-fpm.tpl.conf" "$PHP_FPM_CONF"
 
-echo "$PHP_FPM_BIN"
-$PHP_FPM_BIN -v
-
 # Start php-fpm
 "$PHP_FPM_BIN" --fpm-config "$PHP_FPM_CONF"
 
@@ -47,4 +44,4 @@ tpl "$DIR/fastcgi.tpl.conf" "$DIR/nginx/fastcgi.conf"
 tpl "$DIR/default-site.tpl.conf" "$DIR/nginx/sites-enabled/default-site.conf"
 
 # Start nginx.
-sudo nginx -c "$DIR/nginx/nginx.conf"
+nginx -c "$DIR/nginx/nginx.conf"
