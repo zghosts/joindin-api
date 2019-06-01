@@ -43,6 +43,7 @@ env:
 
 before_install:
   - mysql -e "create database IF NOT EXISTS $DB_NAME;" -u root
+  - mysql -e "grant all privileges on joindin.* to joindin@'localhost' identified by 'password';"
 
 before_script:
   - git remote set-branches --add origin master
