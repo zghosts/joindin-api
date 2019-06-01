@@ -35,7 +35,7 @@ function handle_exception(\Throwable $e)
     $request->getView()->render([$message]);
 }
 
-set_exception_handler('handle_exception');
+//set_exception_handler('handle_exception');
 
 // config setup
 define('BASEPATH', '.');
